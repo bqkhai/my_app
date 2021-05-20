@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wemapgl/wemapgl.dart';
 
-import '../constants.dart';
 import 'ePage.dart';
-
 
 
 class RoutePage extends EPage {

@@ -18,7 +18,7 @@ dependencies:
   firebase_core: 
   cloud_firestore: ^2.2.0
   google_sign_in:
-  splashscreen: ^1.2.0
+
 
 dev_dependencies:
   flutter_test:
@@ -28,17 +28,18 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-assets:
-  - assets/symbols/custom-icon.png
-  - assets/symbols/origin.png
-  - assets/symbols/destination.png
-  - assets/symbols/2.0x/custom-icon.png
-  - assets/symbols/2.0x/origin.png
-  - assets/symbols/2.0x/destination.png
-  - assets/symbols/3.0x/custom-icon.png
-  - assets/symbols/3.0x/origin.png
-  - assets/symbols/3.0x/destination.png
-  - assets/geojson/ne_10m_ports.geojson
-  - assets/geojson/line-samples.geojson
-  - assets/geojson/polygon-samples.geojson
-  - assets/images/
+  assets:
+    - assets/symbols/custom-icon.png
+    - assets/symbols/origin.png
+    - assets/symbols/destination.png
+    - assets/symbols/2.0x/custom-icon.png
+    - assets/symbols/2.0x/origin.png
+    - assets/symbols/2.0x/destination.png
+    - assets/symbols/3.0x/custom-icon.png
+    - assets/symbols/3.0x/origin.png
+    - assets/symbols/3.0x/destination.png
+    - assets/geojson/ne_10m_ports.geojson
+    - assets/geojson/line-samples.geojson
+    - assets/geojson/polygon-samples.geojson
+    
+    - assets/images/logo.png

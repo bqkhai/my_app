@@ -5,6 +5,7 @@ import 'package:my_app/pages/route_page.dart';
 import 'package:my_app/pages/search_map_page.dart';
 
 
+// ignore: must_be_immutable
 class BottomNavBar extends StatefulWidget {
   int index;
 
@@ -33,29 +34,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
     return new Scaffold(
       body: _child[_currentIndex],
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: _currentIndex,
-      //   onTap: _setCurrentIndex,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.home),
-      //         label: 'HOME',
-      //         backgroundColor: Colors.black54),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.local_movies_outlined),
-      //         label: 'SHOWTIMES',
-      //         backgroundColor: Colors.black54),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.local_grocery_store),
-      //         label: 'STORE',
-      //         backgroundColor: Colors.black54),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.account_circle),
-      //         label: 'PROFILE',
-      //         backgroundColor: Colors.black54)
-      //   ],
-      // ),
-
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         selectedItemColor: Colors.amber[800],

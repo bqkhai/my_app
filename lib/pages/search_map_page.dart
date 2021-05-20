@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wemapgl/wemapgl.dart';
 
-import '../constants.dart';
 import 'ePage.dart';
 
 class SearchMapPage extends EPage{
@@ -23,8 +22,8 @@ class SearchMap extends StatefulWidget {
 class SearchMapState extends State<SearchMap> {
   WeMapController mapController;
   int searchType = 1; //Type of search bar
-  String searchInfoPlace = "Tìm kiếm ở đây"; //Hint text for InfoBar
-  LatLng myLatLng = LatLng(21.038282, 105.782885);
+  String searchInfoPlace = "Tìm kiếm";
+  LatLng myLatLng = LatLng(21.038195, 105.782694);
   bool reverse = true;
   WeMapPlace place;
 
@@ -61,7 +60,7 @@ class SearchMapState extends State<SearchMap> {
               });
               mapController.moveCamera(
                 CameraUpdate.newCameraPosition(
-                  CameraPosition(target: place?.location, zoom: 14.0),
+                  CameraPosition(target: place?.location, zoom: 16.00),
                 ),
               );
               mapController.showPlaceCard?.call(place);

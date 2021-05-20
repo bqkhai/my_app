@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/pages/ePage.dart';
 
-import '../constants.dart';
+
 
 class AboutPage extends EPage {
   AboutPage() : super(const Icon(Icons.account_circle), 'About');
