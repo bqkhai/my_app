@@ -3,6 +3,7 @@ import 'package:my_app/pages/about_page.dart';
 import 'package:my_app/pages/home_page.dart';
 import 'package:my_app/pages/route_page.dart';
 import 'package:my_app/pages/search_map_page.dart';
+import 'package:my_app/pages/weather_page.dart';
 
 
 // ignore: must_be_immutable
@@ -21,6 +22,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     HomePage(),
     RoutePage(),
     SearchMapPage(),
+    WeatherPage(),
     AboutPage(),
   ];
   void _setCurrentIndex(int index) {
@@ -39,26 +41,31 @@ class _BottomNavBarState extends State<BottomNavBar> {
         selectedItemColor: Colors.amber[800],
         onTap: _setCurrentIndex,
 
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.map),
             label: 'Home',
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.blueGrey[400],
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.directions_run),
-            label: 'Route',
-            backgroundColor: Colors.green,
+            label: 'Direction',
+            backgroundColor: Colors.green[400],
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.purple[400],
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.wb_sunny),
+            label: 'Weather',
+            backgroundColor: Colors.grey,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: 'About',
-            backgroundColor: Colors.pink,
+            backgroundColor: Colors.pink[300],
           ),
         ],
       ),

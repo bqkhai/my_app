@@ -73,20 +73,24 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WeMap Home'),
+        title: Text(
+          'WeMap Home',
+          style: TextStyle(color: Colors.white),
+        ),
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.blueGrey[400],
         leading: Builder(
           builder: ( BuildContext context){
             return IconButton(
               icon: Icon(Icons.menu),
               onPressed: () => Scaffold.of(context).openDrawer(),
-              //tooltip: "Menu",
+              tooltip: "Menu",
             );
           }
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.notifications),
+            icon: Icon(Icons.notifications, color: Colors.yellow[300],),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute<void>(
                 builder: (BuildContext context) {
@@ -98,7 +102,6 @@ class HomePageState extends State<HomePage> {
                           color: Colors.white,
                         ),
                       ),
-                      backgroundColor: Colors.transparent,
                       elevation: 0.0,
                     ),
                     body: Center(
@@ -106,11 +109,9 @@ class HomePageState extends State<HomePage> {
                         "No Notifications",
                         style: TextStyle(
                           fontSize: 20,
-                          color: Colors.black,
                         ),
                       ),
                     ),
-                    backgroundColor: Colors.white,
                   );
                 },
               ));
@@ -118,7 +119,6 @@ class HomePageState extends State<HomePage> {
             tooltip: "Notifications",
           ),
         ],
-        backgroundColor: Colors.transparent,
         elevation: 0.0,
         bottomOpacity: 0.5,
       ),
@@ -131,9 +131,10 @@ class HomePageState extends State<HomePage> {
       ),
 
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueGrey[400],
         onPressed: _getLocation,
         tooltip: 'getLocation',
-        child: Icon(Icons.location_searching),
+        child: Icon(Icons.gps_fixed),
       ),
 
       drawer: Drawer(
@@ -144,7 +145,7 @@ class HomePageState extends State<HomePage> {
             DrawerHeader(
               //child: Text('WeMap Mobile'),
               decoration: BoxDecoration(
-                color: Colors.grey.shade900,
+                color: Colors.grey,
                 image: DecorationImage(
                   image: AssetImage("assets/images/logo.png"),
                   fit: BoxFit.cover)

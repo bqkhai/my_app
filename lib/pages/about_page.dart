@@ -17,10 +17,10 @@ class About extends StatefulWidget {
   const About();
 
   @override
-  State createState() => AboutStage();
+  State createState() => AboutState();
 }
 
-class AboutStage extends State<About>{
+class AboutState extends State<About>{
 
   @override
   Widget build(BuildContext context) {
