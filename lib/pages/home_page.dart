@@ -1,11 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/pages/about_page.dart';
-import 'package:my_app/pages/route_page.dart';
-import 'package:my_app/pages/search_map_page.dart';
 import 'package:wemapgl/wemapgl.dart' as WEMAP;
-import 'package:flutter/services.dart';
 import 'package:location/location.dart';
 
 
@@ -18,54 +14,96 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
 
-  WEMAP.WeMapController mapController;
   String _styleString = WEMAP.WeMapStyles.WEMAP_VECTOR_STYLE;
   StreamSubscription _locationSubscription;
-  Location _locationTracker = Location();
+  Completer<WEMAP.WeMapController> _controller = Completer();
+  static final WEMAP.CameraPosition _initialLocation = WEMAP.CameraPosition(target: WEMAP.LatLng(21.059686, 105.779383), zoom: 15.0);
 
-  static final WEMAP.CameraPosition _initialLocation = WEMAP.CameraPosition(target: WEMAP.LatLng(21.059686, 105.779383), zoom: 16.00);
+  //WEMAP.WeMapController mapController;
+  //Location _locationTracker = Location();
+  // void _onMapCreated(WEMAP.WeMapController controller) async {
+  //   mapController = controller;
+  // }
 
-  void _onMapCreated(WEMAP.WeMapController controller) async {
-    mapController = controller;
+  // void _getLocation() async {
+  //   try {
+  //     // ignore: unused_local_variable
+  //     var location = await _locationTracker.getLocation();
+
+  //     if (_locationSubscription != null) {
+  //       _locationSubscription.cancel();
+  //     }
+
+  //     _locationSubscription =
+  //         _locationTracker.onLocationChanged.listen((newData) {
+  //       if (mapController != null) {
+  //         mapController.animateCamera(WEMAP.CameraUpdate.newCameraPosition(
+  //             new WEMAP.CameraPosition(
+  //                 bearing: 0.0,
+  //                 target: WEMAP.LatLng(newData.latitude, newData.longitude),
+  //                 tilt: 0,
+  //                 zoom: 15.0)));
+  //         mapController.addLine(WEMAP.LineOptions(
+  //           lineColor: "#08a5bd",
+  //           lineWidth: 5,
+  //           lineOpacity: 1,
+  //         ));
+  //       }
+  //     });
+  //   } on PlatformException catch (e) {
+  //     if (e.code == 'PERMISSION_DENIED') {
+  //       debugPrint("Permission Denied");
+  //     }
+  //   }
+  // }
+
+  WEMAP.WeMapController mapController;
+  bool _satelliteEnabled = false;
+  Widget _setStyleToSatellite() {
+    return IconButton(
+      icon: const Icon(Icons.satellite),
+      onPressed: () {
+        setState(() {
+          if (_satelliteEnabled == false) {
+            _satelliteEnabled = true;
+            mapController?.addSatelliteLayer();
+          } else {
+            _satelliteEnabled = false;
+            mapController?.removeSatelliteLayer();
+          }
+        });
+      },
+    );
   }
 
   void _getLocation() async {
+    final WEMAP.WeMapController controller = await _controller.future;
+    LocationData currentLocation;
+    Location location = new Location();
     try {
-      // ignore: unused_local_variable
-      var location = await _locationTracker.getLocation();
-
-      if (_locationSubscription != null) {
-        _locationSubscription.cancel();
-      }
-
-      _locationSubscription =
-          _locationTracker.onLocationChanged.listen((newData) {
-        if (mapController != null) {
-          mapController.animateCamera(WEMAP.CameraUpdate.newCameraPosition(
-              new WEMAP.CameraPosition(
-                  bearing: 0.0,
-                  target: WEMAP.LatLng(newData.latitude, newData.longitude),
-                  tilt: 0,
-                  zoom: 16.00)));
-          mapController.addLine(WEMAP.LineOptions(
-            lineColor: "#08a5bd",
-            lineWidth: 5,
-            lineOpacity: 1,
-          ));
-        }
-      });
-    } on PlatformException catch (e) {
-      if (e.code == 'PERMISSION_DENIED') {
-        debugPrint("Permission Denied");
-      }
+      currentLocation = await location.getLocation();
+    } on Exception {
+      currentLocation = null;
     }
+
+    controller.animateCamera(WEMAP.CameraUpdate.newCameraPosition(
+      new WEMAP.CameraPosition(
+        bearing: 0,
+        tilt: 0,
+        target: WEMAP.LatLng(currentLocation.latitude, currentLocation.longitude),
+        zoom: 15.0,
+      ),
+    ));
+    controller.addLine(WEMAP.LineOptions(
+      lineColor: "#08a5bd",
+      lineWidth: 5,
+      lineOpacity: 1,
+    ));
   }
 
   @override
   void dispose() {
-    if (_locationSubscription != null) {
-      _locationSubscription.cancel();
-    }
+    _locationSubscription?.cancel();
     super.dispose();
   }
 
@@ -127,7 +165,10 @@ class HomePageState extends State<HomePage> {
         styleString: _styleString,
         initialCameraPosition: _initialLocation,
         myLocationEnabled: true,
-        onMapCreated: _onMapCreated,
+        //onMapCreated: _onMapCreated,
+        onMapCreated: (WEMAP.WeMapController controller) {
+          _controller.complete(controller);
+        },
       ),
 
       floatingActionButton: FloatingActionButton(

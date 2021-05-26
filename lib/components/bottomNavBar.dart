@@ -48,7 +48,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             backgroundColor: Colors.blueGrey[400],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.directions_run),
+            icon: Icon(Icons.directions),
             label: 'Direction',
             backgroundColor: Colors.green[400],
           ),
