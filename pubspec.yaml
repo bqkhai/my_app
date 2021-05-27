@@ -43,3 +43,4 @@ flutter:
     - assets/geojson/polygon-samples.geojson
     
     - assets/images/logo.png
+    - assets/images/mark-location.png
