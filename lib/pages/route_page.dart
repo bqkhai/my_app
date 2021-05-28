@@ -4,7 +4,6 @@ import 'package:wemapgl/wemapgl.dart';
 
 import 'ePage.dart';
 
-
 class RoutePage extends EPage {
   RoutePage() : super(const Icon(Icons.directions), 'Direction');
 
@@ -22,11 +21,16 @@ class Routing extends StatefulWidget {
 }
 
 class RoutingState extends State<Routing> {
+  final WeMapPlace _originPlace = null;
+  final WeMapPlace _destinationPlace = null;
   
   @override
   Widget build(BuildContext context) {
-//    Size size = MediaQuery.of(context).size;
-//    _panelOpened = size.height - MediaQuery.of(context).padding.top;
-    return WeMapDirection(originIcon: "images/mark-location.png", destinationIcon: "images/mark-location.png");
+    return WeMapDirection(
+      originIcon: "assets/symbols/origin.png", 
+      destinationIcon: "assets/symbols/destination.png",
+      originPlace: _originPlace,
+      destinationPlace: _destinationPlace,
+    );
   }
 }

@@ -11,27 +11,35 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   
-  wemapgl:
-    path: ./WeMap-Flutter-SDK
-  location: ^4.1.1
-  firebase_auth: ^1.2.0
+  location: ^2.5.4
+  weather_icons: ^2.0.1
+  connectivity: ^0.4.8+1
+  fluttertoast: ^3.1.0
+  firebase_auth:
   firebase_core: 
-  cloud_firestore: ^2.2.0
+  cloud_firestore:
   google_sign_in:
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  wemapgl:
+    path: ./WeMap-Flutter-SDK-master
   
 
 flutter:
   uses-material-design: true
 
   assets:
+    - assets/images/
+    - assets/symbols/place.png
+    - assets/symbols/placeholder.png
     - assets/symbols/custom-icon.png
     - assets/symbols/origin.png
     - assets/symbols/destination.png
+    - assets/symbols/2.0x/place.png
+    - assets/symbols/2.0x/placeholder.png
     - assets/symbols/2.0x/custom-icon.png
     - assets/symbols/2.0x/origin.png
     - assets/symbols/2.0x/destination.png
@@ -41,5 +49,3 @@ flutter:
     - assets/geojson/ne_10m_ports.geojson
     - assets/geojson/line-samples.geojson
     - assets/geojson/polygon-samples.geojson
-    
-    - assets/images/logo.png

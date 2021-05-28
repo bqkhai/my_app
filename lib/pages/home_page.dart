@@ -120,7 +120,7 @@ class HomePageState extends State<HomePage> {
         leading: Builder(
           builder: ( BuildContext context){
             return IconButton(
-              icon: Icon(Icons.menu),
+              icon: Icon(Icons.menu, color: Colors.white),
               onPressed: () => Scaffold.of(context).openDrawer(),
               tooltip: "Menu",
             );
@@ -128,7 +128,7 @@ class HomePageState extends State<HomePage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.notifications, color: Colors.yellow[300],),
+            icon: Icon(Icons.notifications, color: Colors.white,),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute<void>(
                 builder: (BuildContext context) {
@@ -140,6 +140,7 @@ class HomePageState extends State<HomePage> {
                           color: Colors.white,
                         ),
                       ),
+                      backgroundColor: Colors.blueGrey[400],
                       elevation: 0.0,
                     ),
                     body: Center(
@@ -172,7 +173,7 @@ class HomePageState extends State<HomePage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blueGrey[400],
+        backgroundColor: Colors.blueGrey[800],
         onPressed: _getLocation,
         tooltip: 'getLocation',
         child: Icon(Icons.gps_fixed),

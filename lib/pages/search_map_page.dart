@@ -26,7 +26,8 @@ class SearchMapState extends State<SearchMap> {
   WEMAP.WeMapController mapController;
   int searchType = 1;
   String searchInfoPlace = "Tìm kiếm";
-  LatLng myLatLng = LatLng(21.038195, 105.782694);
+  //LatLng myLatLng = LatLng(21.038195, 105.782694);
+  LatLng searchLocation;
   bool reverse = true;
   WeMapPlace place;
 
@@ -34,18 +35,6 @@ class SearchMapState extends State<SearchMap> {
   void _onMapCreated(WeMapController controller) {
     mapController = controller;
   }
-
-  // void _add(String iconImage) {
-  //   var latLng = ;
-  //   mapController.addSymbol(
-  //     SymbolOptions(
-  //       geometry: latLng,
-  //       iconImage: iconImage,
-  //     ),
-  //   );
-  //   setState(() {
-  //   });
-  // }
 
   Future<void> _addMarker(latLng, controller, iconImage) async {
     await mapController?.addSymbol(SymbolOptions(
@@ -76,8 +65,20 @@ class SearchMapState extends State<SearchMap> {
             ),
             destinationIcon: "assets/symbols/destination.png",       
           ),
+          
+          // WeMapSearch(
+          //   onTapChooseOnMap: () {
+          //     Navigator.of(context).push(MaterialPageRoute(
+          //       builder: (context) => ChooseOnMap(
+          //         searchLocation: widget.searchLocation ?? LatLng(21.03, 105.787),
+          //         iconImage: widget.destinationIcon,
+          //       )
+          //     ));
+          //   },
+          // ),
+
           WeMapSearchBar(
-            location: myLatLng,
+            location: LatLng(21.038195, 105.782694),
             onSelected: (_place) {
               setState(() {
                 place = _place;
@@ -87,8 +88,7 @@ class SearchMapState extends State<SearchMap> {
                   CameraPosition(target: place?.location, zoom: 15.0),
                 ),
               );
-              mapController.showPlaceCard?.call(place);  
-              //_addMarker();
+              mapController.showPlaceCard?.call(place);
             },
             onClearInput: () {
               setState(() {
