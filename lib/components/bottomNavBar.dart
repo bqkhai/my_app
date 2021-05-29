@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/pages/about_page.dart';
+import 'package:my_app/pages/explore_page.dart';
 import 'package:my_app/pages/home_page.dart';
 import 'package:my_app/pages/route_page.dart';
 import 'package:my_app/pages/search_map_page.dart';
@@ -20,8 +21,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 0;
   final List<Widget> _child = [
     HomePage(),
+    ExplorePage(),
     RoutePage(),
-    SearchMapPage(),
     WeatherPage(),
     AboutPage(),
   ];
@@ -48,13 +49,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
             backgroundColor: Colors.blueGrey[400],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.directions),
-            label: 'Direction',
+            icon: Icon(Icons.location_on),
+            label: 'Explore',
             backgroundColor: Colors.green[400],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.directions),
+            label: 'Go',
             backgroundColor: Colors.purple[400],
           ),
           BottomNavigationBarItem(
@@ -64,7 +65,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
-            label: 'About',
+            label: 'Profile',
             backgroundColor: Colors.pink[300],
           ),
         ],

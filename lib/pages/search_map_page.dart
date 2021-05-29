@@ -26,7 +26,6 @@ class SearchMapState extends State<SearchMap> {
   WEMAP.WeMapController mapController;
   int searchType = 1;
   String searchInfoPlace = "Tìm kiếm";
-  //LatLng myLatLng = LatLng(21.038195, 105.782694);
   LatLng searchLocation;
   bool reverse = true;
   WeMapPlace place;
@@ -60,25 +59,14 @@ class SearchMapState extends State<SearchMap> {
             reverse: true,
             onMapCreated: _onMapCreated,
             initialCameraPosition: const CameraPosition(
-              target: LatLng(21.036029, 105.782950),
+              target: LatLng(21.03765756214673, 105.78163419961048),
               zoom: 15.0,
             ),
             destinationIcon: "assets/symbols/destination.png",       
           ),
-          
-          // WeMapSearch(
-          //   onTapChooseOnMap: () {
-          //     Navigator.of(context).push(MaterialPageRoute(
-          //       builder: (context) => ChooseOnMap(
-          //         searchLocation: widget.searchLocation ?? LatLng(21.03, 105.787),
-          //         iconImage: widget.destinationIcon,
-          //       )
-          //     ));
-          //   },
-          // ),
 
           WeMapSearchBar(
-            location: LatLng(21.038195, 105.782694),
+            location: LatLng(21.03765756214673, 105.78163419961048),
             onSelected: (_place) {
               setState(() {
                 place = _place;

@@ -5,7 +5,7 @@ import 'package:my_app/pages/ePage.dart';
 
 
 class AboutPage extends EPage {
-  AboutPage() : super(const Icon(Icons.account_circle), 'About');
+  AboutPage() : super(const Icon(Icons.account_circle), 'Profile');
 
   @override
   Widget build(BuildContext context) {

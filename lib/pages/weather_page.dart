@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/pages/ePage.dart';
-import 'package:my_app/services/weather_response.dart';
+import 'package:my_app/services/weather/weather_response.dart';
 import 'package:wemapgl/wemapgl.dart' as WEMAP;
 import 'package:wemapgl/wemapgl.dart';
 import 'package:http/http.dart' as http;

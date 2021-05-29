@@ -5,7 +5,7 @@ import 'package:wemapgl/wemapgl.dart';
 import 'ePage.dart';
 
 class RoutePage extends EPage {
-  RoutePage() : super(const Icon(Icons.directions), 'Direction');
+  RoutePage() : super(const Icon(Icons.directions), 'Go');
 
   @override
   Widget build(BuildContext context) {

@@ -13,52 +13,14 @@ class HomePage extends StatefulWidget {
 
 
 class HomePageState extends State<HomePage> {
-
   String _styleString = WEMAP.WeMapStyles.WEMAP_VECTOR_STYLE;
   StreamSubscription _locationSubscription;
   Completer<WEMAP.WeMapController> _controller = Completer();
-  static final WEMAP.CameraPosition _initialLocation = WEMAP.CameraPosition(target: WEMAP.LatLng(21.059686, 105.779383), zoom: 15.0);
-
-  //WEMAP.WeMapController mapController;
-  //Location _locationTracker = Location();
-  // void _onMapCreated(WEMAP.WeMapController controller) async {
-  //   mapController = controller;
-  // }
-
-  // void _getLocation() async {
-  //   try {
-  //     // ignore: unused_local_variable
-  //     var location = await _locationTracker.getLocation();
-
-  //     if (_locationSubscription != null) {
-  //       _locationSubscription.cancel();
-  //     }
-
-  //     _locationSubscription =
-  //         _locationTracker.onLocationChanged.listen((newData) {
-  //       if (mapController != null) {
-  //         mapController.animateCamera(WEMAP.CameraUpdate.newCameraPosition(
-  //             new WEMAP.CameraPosition(
-  //                 bearing: 0.0,
-  //                 target: WEMAP.LatLng(newData.latitude, newData.longitude),
-  //                 tilt: 0,
-  //                 zoom: 15.0)));
-  //         mapController.addLine(WEMAP.LineOptions(
-  //           lineColor: "#08a5bd",
-  //           lineWidth: 5,
-  //           lineOpacity: 1,
-  //         ));
-  //       }
-  //     });
-  //   } on PlatformException catch (e) {
-  //     if (e.code == 'PERMISSION_DENIED') {
-  //       debugPrint("Permission Denied");
-  //     }
-  //   }
-  // }
+  static final WEMAP.CameraPosition _initialLocation = WEMAP.CameraPosition(target: WEMAP.LatLng(21.059715, 105.779474), zoom: 15.0);
 
   WEMAP.WeMapController mapController;
   bool _satelliteEnabled = false;
+  // ignore: unused_element
   Widget _setStyleToSatellite() {
     return IconButton(
       icon: const Icon(Icons.satellite),
@@ -173,7 +135,7 @@ class HomePageState extends State<HomePage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blueGrey[800],
+        backgroundColor: Colors.blueGrey[400],
         onPressed: _getLocation,
         tooltip: 'getLocation',
         child: Icon(Icons.gps_fixed),
@@ -187,7 +149,7 @@ class HomePageState extends State<HomePage> {
             DrawerHeader(
               //child: Text('WeMap Mobile'),
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: Colors.grey[800],
                 image: DecorationImage(
                   image: AssetImage("assets/images/logo.png"),
                   fit: BoxFit.cover)
