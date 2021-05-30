@@ -17,6 +17,9 @@ dependencies:
   fluttertoast: ^3.1.0
   google_sign_in:
   flutter_svg: ^0.21.0
+  firebase_core: ^0.5.0
+  firebase_auth: ^0.18.4+1
+  firebase_database: ^4.4.0
 
   
   transformer_page_view:

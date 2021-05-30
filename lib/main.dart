@@ -1,17 +1,26 @@
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/components/bottomNavBar.dart';
+import 'package:my_app/pages/profile_page.dart';
+// ignore: unused_import
+import 'package:my_app/pages/explore_page.dart';
+import 'package:my_app/pages/login_page.dart';
+import 'package:my_app/pages/signup_page.dart';
+import 'package:my_app/shared/constants.dart';
 import 'package:wemapgl/wemapgl.dart' as WEMAP;
 
-import 'constants.dart';
 
-
-Future<void> main() async {
+void main() async {
   WEMAP.Configuration.setWeMapKey('GqfwrZUEfxbwbnQUhtBMFivEysYIxelQ');
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
+
+
+DatabaseReference userRef =
+    FirebaseDatabase.instance.reference().child('users');
 
 
 class MyApp extends StatelessWidget {
@@ -20,13 +29,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Wemap Home',
+      title: 'Mobile WeMap',
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      //home: BottomNavBar(0),
-      home: BottomNavBar(0),
+      initialRoute: LoginPage.idScreen,
+      routes: {
+        SignUpPage.idScreen: (context) => SignUpPage(),
+        LoginPage.idScreen: (context) => LoginPage(),
+        ProfilePage.idScreen: (context) => ProfilePage(),
+        BottomNavBar.idScreen: (context) => BottomNavBar(0),
+      },
     );
   }
 }

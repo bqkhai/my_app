@@ -6,7 +6,7 @@ import 'package:location/location.dart';
 
 
 class HomePage extends StatefulWidget {
-  static String routeName = '/home';
+  static const String idScreen = 'home';
   @override
   HomePageState createState() => HomePageState();
 }

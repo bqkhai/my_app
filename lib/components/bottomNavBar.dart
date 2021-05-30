@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/pages/about_page.dart';
+import 'package:my_app/pages/profile_page.dart';
 import 'package:my_app/pages/explore_page.dart';
 import 'package:my_app/pages/home_page.dart';
 import 'package:my_app/pages/route_page.dart';
@@ -7,9 +7,11 @@ import 'package:my_app/pages/search_map_page.dart';
 import 'package:my_app/pages/weather_page.dart';
 
 
+
 // ignore: must_be_immutable
 class BottomNavBar extends StatefulWidget {
   int index;
+  static const String idScreen = 'BottomNavbar';
 
   BottomNavBar(this.index);
 
@@ -24,7 +26,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ExplorePage(),
     RoutePage(),
     WeatherPage(),
-    AboutPage(),
+    ProfilePage(),
   ];
   void _setCurrentIndex(int index) {
     setState(() {

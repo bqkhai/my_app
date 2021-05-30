@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 
 
 class ExplorePage extends EPage{
+  static const String idScreen = 'explore';
   ExplorePage(): super(const Icon(Icons.map), 'Explore');
   @override
   Widget build(BuildContext context){
@@ -242,8 +243,8 @@ class ExploreState extends State<Explore> {
 
                         ListTile(
                           leading: Icon(Icons.info, color: Colors.amber,),
-                          title: Text('Welcome to: $city.'),
-                          subtitle: Text('Temp: $celsius °C, Desc: $description.' ),
+                          title: Text('Welcome to: $city'),
+                          subtitle: Text('Temp: $celsius °C, Desc: $description' ),
                         ),
 
                       ],

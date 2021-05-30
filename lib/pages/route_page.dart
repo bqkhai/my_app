@@ -14,8 +14,8 @@ class RoutePage extends EPage {
 }
 
 class Routing extends StatefulWidget {
+  static const String idScreen = 'route';
   const Routing();
-
   @override
   State createState() => RoutingState();
 }
