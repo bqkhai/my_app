@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:my_app/data_models/place.dart';
-import 'package:my_app/services/weather/weather_response.dart';
+import 'package:my_app/shared/constants.dart';
 import 'package:wemapgl/wemapgl.dart';
 import 'ePage.dart';
 import 'package:location/location.dart';
@@ -31,11 +31,10 @@ class ExploreState extends State<Explore> {
   WeMapPlace mapPlace;
   LocationData currentLocation;
   // Location location = new Location();
-  WeatherResponse weatherResponse;
+  //WeatherResponse weatherResponse;
 
   final String _placeFavouriteIcon = "assets/symbols/2.0x/placefavourite.png";
   final String _placeMarkerIcon = "assets/symbols/2.0x/placemarker.png";
-  final String apiKey = '9f566121a09100585fa23c378331374e';
   Symbol _focusPlaceSymbol;
 
   final int searchType = 1;
@@ -140,7 +139,7 @@ class ExploreState extends State<Explore> {
     double lat = place.location.latitude;
     double lon = place.location.longitude;
 
-    var url = 'http://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey&units=metric';
+    var url = 'http://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiWeatherKey&units=metric';
 
     var response = await http.get(Uri.parse(url));
     if(response.statusCode == 200){
@@ -244,7 +243,7 @@ class ExploreState extends State<Explore> {
                         ListTile(
                           leading: Icon(Icons.info, color: Colors.amber,),
                           title: Text('Welcome to: $city'),
-                          subtitle: Text('Temp: $celsius °C, Desc: $description' ),
+                          subtitle: Text('Temp: $celsius °C, Desc: $description'),
                         ),
 
                       ],

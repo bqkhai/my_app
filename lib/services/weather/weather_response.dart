@@ -1,14 +1,17 @@
-class WeatherResponse {
-  String city, description;
-  double temperature;
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-  WeatherResponse({this.city, this.description, this.temperature});
+class WeatherResponse{
 
-  factory WeatherResponse.fromJSON(Map<String, dynamic> json) {
-    return WeatherResponse(
-      city: json['name'],
-      description: json['weather'][0]['description'],
-      temperature: json['main']['temp'],
-    );
+  String url;
+  WeatherResponse(this.url);
+
+  Future getData() async {
+    http.Response response = await http.get(url);
+    if(response.statusCode == 200){
+      String data = response.body;
+      return json.decode(data);
+    }else
+      print(response.statusCode);
   }
 }

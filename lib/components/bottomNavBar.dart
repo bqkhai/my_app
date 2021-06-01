@@ -41,34 +41,34 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: _child[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.redAccent,
         onTap: _setCurrentIndex,
 
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.map),
+            icon: Icon(Icons.map, color: Colors.black87),
             label: 'Home',
-            backgroundColor: Colors.blueGrey[400],
+            backgroundColor: Colors.grey[200],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_on),
+            icon: Icon(Icons.location_on, color: Colors.black87,),
             label: 'Explore',
-            backgroundColor: Colors.green[400],
+            backgroundColor: Colors.grey[200],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.directions),
+            icon: Icon(Icons.directions, color: Colors.black87),
             label: 'Go',
-            backgroundColor: Colors.purple[400],
+            backgroundColor: Colors.grey[200],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.wb_sunny),
+            icon: Icon(Icons.wb_sunny, color: Colors.black87),
             label: 'Weather',
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.grey[200],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: Icon(Icons.account_circle, color: Colors.black87),
             label: 'Profile',
-            backgroundColor: Colors.pink[300],
+            backgroundColor: Colors.grey[200],
           ),
         ],
       ),

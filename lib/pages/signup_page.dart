@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_app/widgets/progressDialog.dart';
-import 'package:my_app/pages/profile_page.dart';
 import 'package:my_app/pages/login_page.dart';
 
 

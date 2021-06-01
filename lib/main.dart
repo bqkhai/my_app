@@ -3,8 +3,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/components/bottomNavBar.dart';
 import 'package:my_app/pages/profile_page.dart';
-// ignore: unused_import
-import 'package:my_app/pages/explore_page.dart';
 import 'package:my_app/pages/login_page.dart';
 import 'package:my_app/pages/signup_page.dart';
 import 'package:my_app/shared/constants.dart';
@@ -12,7 +10,7 @@ import 'package:wemapgl/wemapgl.dart' as WEMAP;
 
 
 void main() async {
-  WEMAP.Configuration.setWeMapKey('GqfwrZUEfxbwbnQUhtBMFivEysYIxelQ');
+  WEMAP.Configuration.setWeMapKey(apiMapKey);
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());

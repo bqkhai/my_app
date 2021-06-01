@@ -75,14 +75,14 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           'WeMap Home',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black87),
         ),
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blueGrey[400],
+        backgroundColor: Colors.grey[200],
         leading: Builder(
           builder: ( BuildContext context){
             return IconButton(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: Icon(Icons.menu, color: Colors.black87),
               onPressed: () => Scaffold.of(context).openDrawer(),
               tooltip: "Menu",
             );
@@ -90,7 +90,7 @@ class HomePageState extends State<HomePage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.notifications, color: Colors.white,),
+            icon: Icon(Icons.notifications, color: Colors.black54,),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute<void>(
                 builder: (BuildContext context) {
@@ -99,10 +99,10 @@ class HomePageState extends State<HomePage> {
                       title: Text(
                         "Notifications",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black87,
                         ),
                       ),
-                      backgroundColor: Colors.blueGrey[400],
+                      backgroundColor: Colors.white,
                       elevation: 0.0,
                     ),
                     body: Center(
@@ -135,7 +135,7 @@ class HomePageState extends State<HomePage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blueGrey[400],
+        backgroundColor: Colors.green[300],
         onPressed: _getLocation,
         tooltip: 'getLocation',
         child: Icon(Icons.gps_fixed),
@@ -147,12 +147,12 @@ class HomePageState extends State<HomePage> {
           children: <Widget>[
             // ignore: missing_required_param
             DrawerHeader(
-              //child: Text('WeMap Mobile'),
               decoration: BoxDecoration(
-                color: Colors.grey[800],
+                color: Colors.grey[600],
                 image: DecorationImage(
-                  image: AssetImage("assets/images/logo.png"),
-                  fit: BoxFit.cover)
+                  image: AssetImage("assets/images/logo.2.png"),
+                  fit: BoxFit.fill,
+                )
               ),
             ),
             ListTile(
