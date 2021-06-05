@@ -15,6 +15,7 @@ class ProfilePage extends StatefulWidget {
 class ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  // ignore: unused_field
   DatabaseReference _databaseReference =
       FirebaseDatabase.instance.reference().child("users");
 
@@ -23,9 +24,11 @@ class ProfilePageState extends State<ProfilePage> {
   bool isUserIdNull = true;
  
   getUser() async {
+    // ignore: await_only_futures
     User firebaseUser = await _auth.currentUser;
     await firebaseUser
         ?.reload();
+    // ignore: await_only_futures
     firebaseUser = await _auth.currentUser;
     if (firebaseUser != null) {
       setState(() {
@@ -106,26 +109,11 @@ class ProfilePageState extends State<ProfilePage> {
             Container(
               
             ),
-            // TextButton(
-            //   onPressed: (){
-            //     _logout();
-            //   },
-            //   child: Text(
-            //     "Log out",
-            //     style: TextStyle(
-            //       fontSize: 22,
-            //       color: Colors.green.shade400,
-            //       backgroundColor: Colors.grey[200]
-            //     ),
-            //   ),
-            // ),
+            // ignore: deprecated_member_use
             RaisedButton(
               color: Colors.green[300],
               textColor: Colors.black,
                 child: Container(
-                  // height: 40.0,
-                  // width: 40.0,
-                  
                   child: Center(
                     child: Text(
                       'Log out',

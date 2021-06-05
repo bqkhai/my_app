@@ -24,7 +24,7 @@ class SignUpPage extends StatelessWidget {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return ProgressDialog(
-            message: "Đang đăng ký, vui lòng chờ...",
+            message: "Registering, please wait...",
           );
         });
     final firebaseUser = (await _auth
@@ -43,11 +43,11 @@ class SignUpPage extends StatelessWidget {
         'phone': phone.text.trim(),
       };
       userRef.child(firebaseUser.uid).set(userDataMap);
-      Fluttertoast.showToast(msg: 'Đăng ký thành công');
+      Fluttertoast.showToast(msg: 'Sign up successful');
       Navigator.pushNamed(context, LoginPage.idScreen);
     } else {
       Navigator.pop(context);
-      Fluttertoast.showToast(msg: "Đăng ký không thành công");
+      Fluttertoast.showToast(msg: "Sign up failed");
     }
   }
 
@@ -147,6 +147,7 @@ class SignUpPage extends StatelessWidget {
                       style: TextStyle(fontSize: 14.0),
                     ),
                     SizedBox(height: 10.0),
+                    // ignore: deprecated_member_use
                     RaisedButton(
                       color: Colors.green[300],
                       textColor: Colors.black,
@@ -154,7 +155,7 @@ class SignUpPage extends StatelessWidget {
                         height: 40.0,
                         child: Center(
                           child: Text(
-                            'submit',
+                            'Submit',
                             style: TextStyle(
                               fontSize: 15.0,
                             ),
@@ -183,6 +184,7 @@ class SignUpPage extends StatelessWidget {
                   ],
                 ),
               ),
+              // ignore: deprecated_member_use
               FlatButton(
                 child: Text(
                   'Already have an account? Log in',

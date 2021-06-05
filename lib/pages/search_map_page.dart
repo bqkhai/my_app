@@ -35,6 +35,7 @@ class SearchMapState extends State<SearchMap> {
     mapController = controller;
   }
 
+  // ignore: unused_element
   Future<void> _addMarker(latLng, controller, iconImage) async {
     await mapController?.addSymbol(SymbolOptions(
       geometry: latLng,

@@ -3,7 +3,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_app/components/bottomNavBar.dart';
-import 'package:my_app/pages/profile_page.dart';
 import 'package:my_app/widgets/progressDialog.dart';
 import 'package:my_app/pages/signup_page.dart';
 
@@ -29,7 +28,7 @@ class _LoginScreenState extends State<LoginPage> {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return ProgressDialog(
-            message: "Đang xác thực, vui lòng chờ...",
+            message: "Please wait...",
           );
         });
     final firebaseUser = (await _auth
@@ -44,17 +43,17 @@ class _LoginScreenState extends State<LoginPage> {
       userRef.child(firebaseUser.uid).once().then((DataSnapshot snap) {
         if (snap.value != null) {
           Navigator.pushNamed(context, BottomNavBar.idScreen);
-          Fluttertoast.showToast(msg: 'Đăng nhập thành công');
+          Fluttertoast.showToast(msg: 'Login successful');
         } else {
           Navigator.pop(context);
 
           _auth.signOut();
-          Fluttertoast.showToast(msg: 'Tài khoản không tồn tại');
+          Fluttertoast.showToast(msg: 'Account does not exist');
         }
       });
     } else {
       Navigator.pop(context);
-      Fluttertoast.showToast(msg: "Không thể đăng nhập");
+      Fluttertoast.showToast(msg: "Can't login");
     }
   }
 
@@ -122,6 +121,7 @@ class _LoginScreenState extends State<LoginPage> {
                       style: TextStyle(fontSize: 14.0),
                     ),
                     SizedBox(height: 10.0),
+                    // ignore: deprecated_member_use
                     RaisedButton(
                       color: Colors.green[300],
                       textColor: Colors.black,
@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginPage> {
                         height: 40.0,
                         child: Center(
                           child: Text(
-                            'submit',
+                            'Submit',
                             style: TextStyle(
                               fontSize: 15.0,
                             ),
@@ -146,6 +146,7 @@ class _LoginScreenState extends State<LoginPage> {
                   ],
                 ),
               ),
+              // ignore: deprecated_member_use
               FlatButton(
                 child: Text(
                   'Don''t have account. Sign up here',

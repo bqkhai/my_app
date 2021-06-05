@@ -30,8 +30,6 @@ class ExploreState extends State<Explore> {
   WeMapController mapController;
   WeMapPlace mapPlace;
   LocationData currentLocation;
-  // Location location = new Location();
-  //WeatherResponse weatherResponse;
 
   final String _placeFavouriteIcon = "assets/symbols/2.0x/placefavourite.png";
   final String _placeMarkerIcon = "assets/symbols/2.0x/placemarker.png";
@@ -42,6 +40,8 @@ class ExploreState extends State<Explore> {
   bool _myLocationEnabled = false;
 
   bool _isShowPlaceCard = false;
+  // ignore: unused_field
+  bool _isShowPlaceWeather = false;
 
 
   Future<Symbol> _addSymbol(LatLng location,
@@ -87,6 +87,7 @@ class ExploreState extends State<Explore> {
     final place = symbol.data['place'];
     if (place != null) {
       _focusPlace(place);
+      _getWeather(place);
     }
   }
 
@@ -98,6 +99,7 @@ class ExploreState extends State<Explore> {
       setState(() {
         mapPlace = place;
         _isShowPlaceCard = true;
+        _isShowPlaceWeather = true;
       });
     } else if (mapPlace != null && _focusPlaceSymbol != null) {
       mapController.updateSymbol(
@@ -107,6 +109,7 @@ class ExploreState extends State<Explore> {
       setState(() {
         mapPlace = place;
         _isShowPlaceCard = true;
+        _isShowPlaceWeather = true;
       });
     } else {
       print('error focus place');
@@ -121,14 +124,10 @@ class ExploreState extends State<Explore> {
       mapPlace = null;
       _focusPlaceSymbol = null;
       _isShowPlaceCard = false;
+      _isShowPlaceWeather = false;
     });
   }
 
-  // void _onMapClick(point, latlng, place) {
-  //   print('Map click');
-  //   _focusPlace(place);
-  //   _getWeather(place);
-  // }
 
   var celsius;
   var city;
@@ -155,6 +154,12 @@ class ExploreState extends State<Explore> {
     }
   }
 
+  void _onMapClick(point, latlng, place) {
+    print('Map click');
+    _focusPlace(place);
+    _getWeather(place);
+  }
+
    
   @override
   Widget build(BuildContext context) {
@@ -165,12 +170,7 @@ class ExploreState extends State<Explore> {
             myLocationEnabled: _myLocationEnabled,
             myLocationRenderMode: MyLocationRenderMode.NORMAL,
             myLocationTrackingMode: MyLocationTrackingMode.Tracking,
-            onMapClick: (point, latLng, place) async {
-              print('Map Click');
-              _focusPlace(place);
-              _getWeather(place);
-              //mapPlace = place;     
-            },
+            onMapClick: _onMapClick,
             reverse: false,
             onMapCreated: _onMapCreated,
             initialCameraPosition: CameraPosition(
@@ -214,6 +214,11 @@ class ExploreState extends State<Explore> {
                           title: Text(mapPlace.placeName),
                           subtitle: Text(mapPlace.description),
                         ),
+                        ListTile(
+                          leading: Icon(Icons.info, color: Colors.amber,),
+                          title: Text('Welcome to: $city'),
+                          subtitle: Text('Temp: $celsius °C, Desc: $description'),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
@@ -239,13 +244,6 @@ class ExploreState extends State<Explore> {
                             const SizedBox(width: 8),
                           ],
                         ),
-
-                        ListTile(
-                          leading: Icon(Icons.info, color: Colors.amber,),
-                          title: Text('Welcome to: $city'),
-                          subtitle: Text('Temp: $celsius °C, Desc: $description'),
-                        ),
-
                       ],
                     ),
                   )

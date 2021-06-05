@@ -3,7 +3,6 @@ import 'package:my_app/pages/profile_page.dart';
 import 'package:my_app/pages/explore_page.dart';
 import 'package:my_app/pages/home_page.dart';
 import 'package:my_app/pages/route_page.dart';
-import 'package:my_app/pages/search_map_page.dart';
 import 'package:my_app/pages/weather_page.dart';
 
 

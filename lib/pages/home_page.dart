@@ -20,9 +20,9 @@ class HomePageState extends State<HomePage> {
 
   WEMAP.WeMapController mapController;
   bool _satelliteEnabled = false;
+  
   // ignore: unused_element
-  Widget _setStyleToSatellite() {
-    return IconButton(
+  Future<Widget> _setStyleToSatellite() async => IconButton(
       icon: const Icon(Icons.satellite),
       onPressed: () {
         setState(() {
@@ -36,7 +36,6 @@ class HomePageState extends State<HomePage> {
         });
       },
     );
-  }
 
   void _getLocation() async {
     final WEMAP.WeMapController controller = await _controller.future;
@@ -128,7 +127,6 @@ class HomePageState extends State<HomePage> {
         styleString: _styleString,
         initialCameraPosition: _initialLocation,
         myLocationEnabled: true,
-        //onMapCreated: _onMapCreated,
         onMapCreated: (WEMAP.WeMapController controller) {
           _controller.complete(controller);
         },

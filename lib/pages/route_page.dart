@@ -6,7 +6,6 @@ import 'ePage.dart';
 
 class RoutePage extends EPage {
   RoutePage() : super(const Icon(Icons.directions), 'Go');
-
   @override
   Widget build(BuildContext context) {
     return const Routing();
